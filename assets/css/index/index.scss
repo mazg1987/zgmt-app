@@ -179,7 +179,7 @@
       width: 400px;
       height: 416px;
       color: #999;
-      background: rgb(238, 232, 232);
+      background: white;
       z-index: 9999;
 
       h4 {
@@ -188,6 +188,8 @@
         border-bottom: 1px solid #3b3535;
         height: 22px;
         line-height: 22px;
+        font-size: 16px;
+        font-weight: 100;
       }
 
       span {

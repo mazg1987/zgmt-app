@@ -23,6 +23,13 @@
           user: ''
         }
       },
+      async mounted() {
+        const { status, data} = await this.$axios.get('/users/getUser')
+        if (status === 200) {
+          //console.log(status,data);
+          this.user = data.user
+        }
+      }
     }
 </script>
 

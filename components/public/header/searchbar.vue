@@ -21,18 +21,24 @@
             v-model="search"
             placeholder="搜索商家或地点"
             @focus="focus"
-            @blur="blur"/>
-          <button class="el-button el-button--primary"><i class="el-icon-search"/></button>
+            @blur="blur"
+            @input="input"/>
+          <!--<button class="el-button el-button&#45;&#45;primary"><i class="el-icon-search"/></button>-->
+
+          <router-link
+            :to="{path:'/products',query:{name:search}}"
+            class="el-button el-button--primary"
+            tag="button"><i class="el-icon-search"/></router-link>
           <!--热门搜索，当文本框获得焦点时显示-->
           <dl
             v-if="isHotPlace"
             class="hotPlace">
             <dt>热门搜索</dt>
             <dd
-              v-for="(item, index) in hotPlace"
+              v-for="(item, index) in $store.state.home.hotPlace"
               :key="index"
             >
-              <a :href="'/products?keyword=' + encodeURIComponent(item.name)">{{ item.name }}</a>
+              <router-link :to="{path:'/products',query:{name:item.name}}">{{ item.name }}</router-link>
             </dd>
           </dl>
 
@@ -43,19 +49,20 @@
             <dd
               v-for="(item, index) in searchList"
               :key="index">
-              <a :href="'/products?keyword=' + encodeURIComponent(item.name)">{{ item.name }}</a>
+              <router-link :to="{path:'/products',query:{name:item.name}}">{{ item.name }}</router-link>
             </dd>
           </dl>
         </div>
 
         <!--热门搜索的导航-->
         <div class="suggset">
-          <a
-            v-for="(item, index) in hotPlace"
+          <router-link
+            v-for="(item, index) in $store.state.home.hotPlace"
             :key="index"
-            :href="'/products?keyword=' + encodeURIComponent(item.name)"
-          >{{ item.name }}</a>
+            :to="{path:'/products',query:{name:item.name}}"
+          >{{ item.name }}</router-link>
         </div>
+        <!--:to="'/products/#' + encodeURIComponent(item.name)"-->
 
         <!--导航菜单-->
         <ul class="nav">
@@ -125,12 +132,25 @@
         this.isFocus = true
       },
       blur() {
+        //当文本框失去焦点的时候会执行该方法，如果没有定时器的延迟执行，会立马改变isFocus的状态导致热门搜索立马隐藏，从而导致热门搜索的连接失效
         setTimeout(() => {
           this.isFocus = false
         }, 200)
+      },
+      async input() {
+        const city = this.$store.state.geo.position.replace('市', '')
+        this.searchList = []
+        var that = this;
+        console.log(this.search);
+        const {data} = await this.$axios.post('/search/top', {
+            input: this.search,
+            city : city
+           }
+        )
+        //console.log(data)
+        this.searchList = data.top.slice(0, 10)
       }
     }
-
   }
 </script>
 
