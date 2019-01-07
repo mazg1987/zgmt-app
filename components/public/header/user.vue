@@ -3,7 +3,7 @@
     <template v-if="user">
       欢迎您，
       <span class="username">{{ user }}</span>
-      [<nuxt-link to="/exit">退出</nuxt-link>]
+      [<router-link to="/exit">退出</router-link>]
     </template>
     <template v-else>
       <nuxt-link

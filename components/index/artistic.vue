@@ -42,7 +42,7 @@
           :body-style="{ padding: '0px' }"
           shadow="never">
           <img
-            :src="item.img"
+            :src="item.img&&item.img.length!=0?item.img[0].url:''"
             class="image">
           <ul class="cbody">
             <li class="title">{{ item.name }}</li>
@@ -63,18 +63,24 @@
         list: {
           all: [
              {
-               imgUrl:
-                '//p0.meituan.net/hotel/01b1941a2e0bf25aed72f69b39e2298c362774.png@368w_208h_1e_1c',
-               title: '东方之家酒店',
-               bottomInfo: '酒店套餐',
-               currentPrice: 398
+               img:[
+                 {
+                   url:'//p0.meituan.net/hotel/01b1941a2e0bf25aed72f69b39e2298c362774.png@368w_208h_1e_1c',
+                 }
+               ],
+               name: '东方之家酒店',
+               address: '酒店套餐',
+               price: 398
              },
             {
-              imgUrl:
-                '//p0.meituan.net/hotel/01b1941a2e0bf25aed72f69b39e2298c362774.png@368w_208h_1e_1c',
-              title: '东方之家酒店',
-              bottomInfo: '酒店套餐',
-              currentPrice: 398
+              img:[
+                {
+                  url:'//p0.meituan.net/hotel/01b1941a2e0bf25aed72f69b39e2298c362774.png@368w_208h_1e_1c',
+                }
+              ],
+              name: '东方之家酒店',
+              address: '酒店套餐',
+              price: 398
             }
           ],
           part: [],

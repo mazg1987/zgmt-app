@@ -5,9 +5,11 @@
       <el-col
         :span="3"
         class="left">
-        <img
-          src="//s0.meituan.net/bs/fe-web-meituan/e5eeaef/img/logo.png"
-          alt="美团">
+        <router-link to="/">
+          <img
+            src="//s0.meituan.net/bs/fe-web-meituan/e5eeaef/img/logo.png"
+            alt="美团">
+        </router-link>
       </el-col>
 
       <!--中间搜索框部分-->

@@ -82,8 +82,9 @@ router.get('/resultsByKeywords',async function(req,res){
         code:0,
         pois:artistics.map(item=>{
           return {
+            id:item.id,
             type: item.type,
-            img: item.photos&&item.photos.length!=0?item.photos[0].url:'',
+            img: item.photos,
             name: item.name,
             comment: Math.floor(Math.random() * 10000),
             rate: item.biz_ext?Number(item.biz_ext.rating):0,
@@ -94,7 +95,8 @@ router.get('/resultsByKeywords',async function(req,res){
             location: item.location,
             module: item.type.split(';')[0],
             address:item.address,
-            tag:item.tag
+            tag:item.tag,
+            children:item.children
           }
         })
       })

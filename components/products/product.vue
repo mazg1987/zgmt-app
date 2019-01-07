@@ -2,7 +2,7 @@
   <dl class="s-item">
     <dt>
       <img
-        :src="meta.img"
+        :src="meta.img&&meta.img.length!=0?meta.img[0].url:''"
         alt="商品图片">
     </dt>
     <dd>

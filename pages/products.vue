@@ -41,7 +41,10 @@
         list : [
             {
               "type": "movie;体育休闲服务;影剧院;电影院",
-              "img": "http://store.is.autonavi.com/showpic/f1a588192eebfd884a617cb3e1655381",
+              "img": [{
+                "title": [],
+                "url": "http://store.is.autonavi.com/showpic/44ae1984d71b3eb9ddf250b73074c3f7"
+              }],
               "name": "夏港影剧院",
               "comment": 3551,
               "rate": 4.9,
@@ -55,7 +58,10 @@
             },
             {
               "type": "part;餐饮服务;中餐厅;中餐厅",
-              "img": "http://store.is.autonavi.com/showpic/e977770ae2c1a6f1a020a0b6e58c6af1",
+              "img": [{
+                "title": [],
+                "url": "http://store.is.autonavi.com/showpic/44ae1984d71b3eb9ddf250b73074c3f7"
+              }],
               "name": "长城园私房菜",
               "comment": 188,
               "rate": 3.5,
@@ -126,6 +132,8 @@
       },
     },
     async asyncData(ctx) {
+      //console.log("products-----------------");
+
       const keyword = ctx.query.name
 
       const { status, data} = await ctx.$axios.get('/category/crumbs', {

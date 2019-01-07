@@ -183,12 +183,14 @@ router.get('/getUser',function(req,res){
     const { username, email } = req.session.passport.user
     res.status(200).json({
       user: username,
-      email
+      email,
+      login:true
     })
   } else {
     res.status(200).json({
       user: '',
-      email: ''
+      email: '',
+      login:false
     })
   }
 })

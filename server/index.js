@@ -17,6 +17,8 @@ const user = require("./interfaces/user")
 const geo = require("./interfaces/geo")
 const search = require("./interfaces/search")
 const category = require("./interfaces/category")
+const cart = require("./interfaces/cart")
+const order = require("./interfaces/order")
 const passport = require('./utils/passport');
 
 app.set('port', port)
@@ -56,6 +58,8 @@ async function start() {
   app.use("/geo",geo);
   app.use("/search",search);
   app.use("/category",category);
+  app.use("/cart",cart);
+  app.use("/order",order);
   // Give nuxt middleware to express
   app.use(nuxt.render)
 

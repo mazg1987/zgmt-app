@@ -10,7 +10,7 @@ const ArtisticScheme = new Schema({
     type: String
   },
   img:{
-    type: String
+    type: Array
   },
   title:{
     type:String
@@ -53,6 +53,9 @@ const ArtisticScheme = new Schema({
   },
   tag:{
     type:String
+  },
+  children:{
+    type:Array
   }
 })
 
